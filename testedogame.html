@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Cobrinha</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top">
+
+<h1>Jogo da cobrinha</h1>
+<p id="pontos">Pontos:00</p>
+
+    </div>
+    <canvas id="canvas" width="400" height="400" ></canvas>
+
+   <script>
+    var rastro = []
+var rabo=3
+var tela = document.getElementById("canvas")
+var pincel = tela.getContext('2d')
+
+
+var pontosnatela = document.getElementById("pontos")
+var pontos = 0
+var velocidade = 70
+
+var x=110
+var y=110
+
+var a = 190
+var b = 190
+var f = x-20
+var g = y
+
+var cima = 38
+var baixo = 40
+var esquerda = 37
+var direita = 39
+var taxa = 20
+
+function limpaTela (){
+
+var descer =0
+    while(descer<=400){
+    for(var ni=0;ni<=400;ni=ni+20){
+    pincel.fillStyle = "grey";
+    pincel.strokeStyle = "grey";
+    pincel.beginPath();
+    pincel.rect(ni,descer,20,20)
+    pincel.closePath()
+    pincel.fill()
+    pincel.stroke()
+}
+    descer = descer +20
+}
+
+}
+function cobrinha(x,y){
+
+    pincel.fillStyle = "black"
+    pincel.beginPath()
+    pincel.arc(x, y, 10, 0, 2 * 3);
+    pincel.fill()
+ 
+}
+
+function maca(){
+
+    pincel.fillStyle="red"
+    pincel.beginPath()
+    pincel.arc(a,b,10,0,2*3)
+    pincel.fill()
+}
+function cabecaCobra(){
+
+    pincel.fillStyle=""
+    pincel.beginPath()
+    pincel.arc(x,y,10,0,2*3)
+    pincel.fill()
+    }
+function leteclas(evento) {
+
+    if(evento.keyCode == cima && y - taxa > 0) {
+            
+            if(direcao==2){
+                direcao=2
+            } else{
+                direcao = 1
+            }        
+
+        }
+    else if (evento.keyCode == baixo && y + taxa < 400) {
+            if(direcao==1){
+                direcao=1
+            } else{
+                direcao = 2
+            }            
+
+        } 
+    else if (evento.keyCode == esquerda && x - taxa > 0) {
+            if(direcao==4){
+                direcao=4
+            } else{
+                direcao = 3
+            } 
+            
+
+        } 
+    else if (evento.keyCode == direita && x + taxa < 400) {
+            if(direcao==3){
+                direcao=3
+            } else{
+                direcao = 4           
+             } 
+            
+        }
+    else if (evento.keyCode == 27 && x + taxa < 400) {
+            direcao=0
+            velocidade=false
+            
+        }
+
+    }
+
+
+function speed(){
+    if (direcao==1 && y>=-10){
+    y=y-20        
+        }
+         if (direcao==2 && y<=410){
+    y=y+20       
+        }
+    if (direcao==3 && x>=-10){
+    x=x-20
+        }
+    if (direcao==4 && x<=410){
+    x=x+20
+        }
+}
+
+
+
+function atualizaTela(){
+    limpaTela()
+    speed()
+    colisao()
+    maca()
+    cabecaCobra()
+        for (var i = 0; i < rastro.length; i++) {
+        cobrinha(rastro[i].px,rastro[i].py);
+        if (rastro[i].px == x &&  rastro[i].py == y)
+        {
+            alert("SE FUDEU")
+            rabo = 3;
+            pontos=0
+            
+        }
+        if (rastro[i].px == a &&  rastro[i].py == b){
+            respaw()
+
+        }
+
+    }
+    rastro.push({ px:x, py:y })
+    while (rastro.length > rabo) {
+        rastro.shift();//tira o primeiro elemento do array
+    }
+    
+
+    pontosnatela.textContent = `Pontos: ${pontos} `
+    
+}
+function respaw(){
+
+           b = array[Math.floor(Math.random()*(0,array.length)+0)]
+               a = array[Math.floor(Math.random()*(0,array.length)+0)]
+        pontos=pontos+1
+        rabo++
+}
+function colisao(){
+
+    if (x==a && y==b){        
+respaw()
+        
+    } 
+   
+    
+    
+    
+    if(x==600){
+
+        alert("SE FUDEU")
+        x=110
+        rabo=3
+        direcao=0
+        pontos =0
+    
+    }
+if(x==-10){
+         alert("SE FUDEU")
+        x=110
+        rabo=3
+        direcao=0
+        pontos=0
+    }
+    if(y==-10){
+        alert("SE FUDEU")
+        y=110
+        rabo =3
+        direcao=0
+        pontos=0
+    } 
+    if(y==600){
+
+        alert("SE FUDEU")
+        y=110
+        rabo=3
+        direcao=0
+        pontos=0
+    
+    }
+}
+
+setInterval(atualizaTela, velocidade)
+
+
+var array = [10,30,50,70,90,110,130,150,170,190,210,230,250,270,290,310,330,350,370,390]
+
+var direcao = 0
+ document.onkeydown = leteclas
+   </script>
+   <style>
+    #pontos{
+    margin-bottom: 0px;
+    background-color: rgb(59, 59, 59);
+    width: 400px;
+    margin: auto
+}
+*{
+    align-items: center;
+    text-align: center;
+    
+}
+body{
+    background-color: rgb(0, 0, 0);
+}
+h1,.top{
+    color: rgb(16, 136, 0);
+    font-family: 'Courier New', Courier, monospace;
+    margin: auto;
+}
+
+   </style>
+</body>
+</html>

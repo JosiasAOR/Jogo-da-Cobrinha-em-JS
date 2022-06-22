@@ -7,8 +7,9 @@ var pincel = tela.getContext('2d')
 var pontosnatela = document.getElementById("pontos")
 var pontos = 0
 var velocidade = 70
+var nivel = 01
 
-
+var nivelnatela=document.getElementById("nivel")
 
 
 var x=0
@@ -31,8 +32,8 @@ function limpaTela (){
 var descer =0
 while(descer<=600){
 for(var ni=0;ni<=600;ni=ni+20){
-    pincel.fillStyle = "grey";
-    pincel.strokeStyle = "grey";
+    pincel.fillStyle = "black";
+    pincel.strokeStyle = "black";
     pincel.beginPath();
     pincel.rect(ni,descer,20,20)
     pincel.closePath()
@@ -45,8 +46,7 @@ descer = descer +20
 }
 function cobrinha(x,y){
 
-pincel.fillStyle="black"
- pincel.strokeStyle = "red";
+pincel.fillStyle="green"
  pincel.beginPath()
  pincel.rect(x,y,20,20)
  pincel.fill()
@@ -65,21 +65,11 @@ pincel.fill()
 pincel.stroke()
 
 }
-function olhos(){
-    pincel.fillStyle="white"
-    pincel.beginPath()
-    pincel.arc(x+5,y+5,4,0,2*2)
-    pincel.fill()
-    
-    
 
-
-}
 function cabecaCobra(){
 
 
-    pincel.fillStyle="black"
-    pincel.strokeStyle = "red";
+    pincel.fillStyle="green"
     pincel.beginPath()
     pincel.rect(x,y,20,20)
     pincel.fill()
@@ -156,10 +146,11 @@ function atualizaTela(){
         {   
             rastro=[]
             pontos = 0
-           
+            nivel = 1
             x = 100
             y = 100
             rabo = 3
+            velocidade = 70
             
         }
     }
@@ -168,16 +159,24 @@ function atualizaTela(){
         rastro.shift();//tira o primeiro elemento do array
     }
     cabecaCobra()
-    olhos()
 
-    pontosnatela.textContent = `Pontos: ${pontos} `
+    pontosnatela.textContent = `Pontos:${pontos}`
+    nivelnatela.textContent = `Nivel:${nivel}`
     setTimeout(atualizaTela,velocidade )
 }
 
 function colisao(){
     if(pontos==100){
-        velocidade=40
+        velocidade=50
+        nivel=2
+
     }
+    if(pontos==200){
+        velocidade=40
+        nivel=3
+
+    }
+
 
     if (x==a && y==b){        
 
@@ -200,6 +199,7 @@ function colisao(){
         direcao=0
         pontos =0
         velocidade = 70
+        nivel = 1
     
     }
 if(x==-20){
@@ -211,6 +211,7 @@ if(x==-20){
         direcao=0
         pontos=0
         velocidade = 70
+        nivel = 1
     }
     if(y==-20){
         rastro=[]
@@ -221,6 +222,7 @@ if(x==-20){
         direcao=0
         pontos=0
         velocidade = 70
+        nivel = 1
     } 
     if(y==600){
         rastro=[]
@@ -231,6 +233,7 @@ if(x==-20){
         direcao=0
         pontos=0
         velocidade = 70
+        nivel = 1
     
     }
 }

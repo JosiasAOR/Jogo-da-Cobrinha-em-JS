@@ -1,26 +1,44 @@
-#pontos{
-    margin-bottom: 0px;
-    background-color: rgb(59, 59, 59);
-    width: 600px;
-    margin: auto
-}
 *{
     align-items: center;
     text-align: center;
     
 }
-body{
+#pontos{
+    text-align: left;
+    color: rgb(255, 255, 255);
+    margin-left: 470px;
+    margin-bottom: -23px;
     background-color: rgb(0, 0, 0);
+    width: 120px;
+    padding-left: 10px;
+}
+#nivel{
+    text-align: left;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    margin-right: 0px;
+    width: 120px;
+    margin-left: 0px;
+    padding-left: 10px;
+}
+
+body{
+    background-color: rgb(124, 124, 124);
+    
 }
 h4,.top{
-    color: rgb(255, 255, 255);
-    font-family: 'Courier New', Courier, monospace;
+    
     font-size: 20px;
     margin: auto;
-    background-color: gray;
+    background-color: rgb(0, 68, 0);
     width: 600px;
-}
+    border-radius: 10px 10px 0px 0px;}
 .nome{
-
-    padding-top: 15px;
+    color: rgb(0, 0, 0);
+    padding-top: 0px;
+    height: 30px;
+    font-family: 'Permanent Marker', cursive;
+}
+canvas {
+    border-radius: 0px 0px 10px 10px;
 }

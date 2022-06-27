@@ -1,44 +1,53 @@
 *{
     align-items: center;
     text-align: center;
+    font-family: 'Press Start 2P', cursive;
     
-}
-#pontos{
-    text-align: left;
-    color: rgb(255, 255, 255);
-    margin-left: 470px;
-    margin-bottom: -23px;
-    background-color: rgb(0, 0, 0);
-    width: 120px;
-    padding-left: 10px;
-}
-#nivel{
-    text-align: left;
-    color: white;
-    background-color: rgb(0, 0, 0);
-    margin-right: 0px;
-    width: 120px;
-    margin-left: 0px;
-    padding-left: 10px;
 }
 
+
 body{
-    background-color: rgb(124, 124, 124);
+    background-color: rgb(3, 3, 3);
     
 }
-h4,.top{
-    
+.game{  
     font-size: 20px;
     margin: auto;
-    background-color: rgb(0, 68, 0);
     width: 600px;
-    border-radius: 10px 10px 0px 0px;}
-.nome{
-    color: rgb(0, 0, 0);
-    padding-top: 0px;
-    height: 30px;
-    font-family: 'Permanent Marker', cursive;
+    border: 15px solid rgb(87, 1, 1);
+
 }
-canvas {
-    border-radius: 0px 0px 10px 10px;
+
+.nome{
+    padding-top: 10px;
+    margin-top: 0px;
+    color: green;
+}
+.info{
+    padding-top: 0px;
+    background-color: rgb(241, 28, 28);
+    margin-bottom:1px ;
+}
+input{
+    position: absolute;
+    margin-left:-50px ;
+    background-color: red;    
+    min-height: 30px;
+    margin-top: -10px;
+    
+    }
+canvas{
+    margin-top: 0px;
+
+}
+#nivel{
+    color: rgb(255, 255, 255);
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+#pontos{
+    position: absolute;
+    margin-left: 440px;
+    margin-top: 0px;
 }

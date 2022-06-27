@@ -32,8 +32,8 @@ function limpaTela (){
 var descer =0
 while(descer<=600){
 for(var ni=0;ni<=600;ni=ni+20){
-    pincel.fillStyle = "black";
-    pincel.strokeStyle = "black";
+    pincel.fillStyle = "gray";
+    pincel.strokeStyle = "gray";
     pincel.beginPath();
     pincel.rect(ni,descer,20,20)
     pincel.closePath()
@@ -64,7 +64,10 @@ pincel.rect(a,b,20,20)
 pincel.fill()
 pincel.stroke()
 
+
+
 }
+
 
 function cabecaCobra(){
 
@@ -166,13 +169,25 @@ function atualizaTela(){
 }
 
 function colisao(){
+    for (let i = 0; i < rastro.length; i++) {
+
+        cobrinha(rastro[i].px,rastro[i].py);
+
+        if ((rastro[i].px ==a)&& (rastro[i].py ==b)) { 
+            b = array[Math.floor(Math.random()*(0,array.length)+0)]
+               a = array[Math.floor(Math.random()*(0,array.length)+0)]  
+            
+            
+        }
+    }
+
+
+
     if(pontos==100){
-        velocidade=50
         nivel=2
 
     }
     if(pontos==200){
-        velocidade=40
         nivel=3
 
     }
@@ -248,6 +263,7 @@ var array = [0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340,3
 
 var direcao = 0
  document.onkeydown = leteclas
+ imagemnatela()
 
 
 

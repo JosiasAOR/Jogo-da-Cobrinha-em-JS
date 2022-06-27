@@ -10,6 +10,12 @@ var velocidade = 70
 var nivel = 01
 
 var nivelnatela=document.getElementById("nivel")
+var restart = document.getElementById("restart")
+restart.addEventListener("click",resetGame)
+function resetGame(){
+
+    direcao =0
+}
 
 
 var x=0
@@ -207,8 +213,7 @@ function colisao(){
     
     if(x==600){
         rastro=[]
-        alert("SE FUDEU")
-        x=100
+        x=50
         y=100
         rabo=3
         direcao=0
@@ -219,7 +224,6 @@ function colisao(){
     }
 if(x==-20){
     rastro=[]
-         alert("SE FUDEU")
         x=120
         y=120
         rabo=3
@@ -230,7 +234,6 @@ if(x==-20){
     }
     if(y==-20){
         rastro=[]
-        alert("SE FUDEU")
         y=120
         x=120
         rabo =3
@@ -241,13 +244,12 @@ if(x==-20){
     } 
     if(y==600){
         rastro=[]
-        alert("SE FUDEU")
         y=120
         x=120
         rabo=3
         direcao=0
         pontos=0
-        velocidade = 70
+        velocidade = false
         nivel = 1
     
     }

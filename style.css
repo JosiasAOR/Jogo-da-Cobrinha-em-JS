@@ -7,15 +7,19 @@
 
 
 body{
-    background-color: rgb(3, 3, 3);
+
+    background: linear-gradient(#e66465, #9198e5);
+    
     
 }
 .game{  
-    
+    background-color: black;
     font-size: 18px;
     margin: auto;
     width: 600px;
-    margin-top: 30px;
+    margin-top: 100px;
+    border:10px solid rgb(65, 61, 61); 
+    margin-bottom: 130px;
 
 }
 
@@ -24,7 +28,6 @@ body{
     color: green;
 }
 .info{
-    border: 5px solid rgb(36, 35, 36);
     padding-top: 0px;
     background-color: rgb(0, 0, 0);
     margin-bottom:1px ;
@@ -59,5 +62,5 @@ canvas{
     background-color: rgb(65, 61, 61);
     padding-top: 1px;
     padding-bottom: 10px;
-    border: 5px solid ;    
+    border: 5px solid;    
 }
